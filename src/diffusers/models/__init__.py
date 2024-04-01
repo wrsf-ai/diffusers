@@ -28,17 +28,24 @@ if is_torch_available():
     _import_structure["adapter"] = ["MultiAdapter", "T2IAdapter"]
     _import_structure["autoencoders.autoencoder_asym_kl"] = ["AsymmetricAutoencoderKL"]
     _import_structure["autoencoders.autoencoder_kl"] = ["AutoencoderKL"]
-    _import_structure["autoencoders.autoencoder_kl_temporal_decoder"] = ["AutoencoderKLTemporalDecoder"]
+    _import_structure["autoencoders.autoencoder_kl_temporal_decoder"] = [
+        "AutoencoderKLTemporalDecoder"
+    ]
     _import_structure["autoencoders.autoencoder_tiny"] = ["AutoencoderTiny"]
-    _import_structure["autoencoders.consistency_decoder_vae"] = ["ConsistencyDecoderVAE"]
+    _import_structure["autoencoders.consistency_decoder_vae"] = [
+        "ConsistencyDecoderVAE"
+    ]
     _import_structure["controlnet"] = ["ControlNetModel"]
+    _import_structure["brushnet"] = ["BrushNetModel"]
     _import_structure["dual_transformer_2d"] = ["DualTransformer2DModel"]
     _import_structure["embeddings"] = ["ImageProjection"]
     _import_structure["modeling_utils"] = ["ModelMixin"]
     _import_structure["transformers.prior_transformer"] = ["PriorTransformer"]
     _import_structure["transformers.t5_film_transformer"] = ["T5FilmDecoder"]
     _import_structure["transformers.transformer_2d"] = ["Transformer2DModel"]
-    _import_structure["transformers.transformer_temporal"] = ["TransformerTemporalModel"]
+    _import_structure["transformers.transformer_temporal"] = [
+        "TransformerTemporalModel"
+    ]
     _import_structure["unets.unet_1d"] = ["UNet1DModel"]
     _import_structure["unets.unet_2d"] = ["UNet2DModel"]
     _import_structure["unets.unet_2d_condition"] = ["UNet2DConditionModel"]
@@ -46,7 +53,9 @@ if is_torch_available():
     _import_structure["unets.unet_i2vgen_xl"] = ["I2VGenXLUNet"]
     _import_structure["unets.unet_kandinsky3"] = ["Kandinsky3UNet"]
     _import_structure["unets.unet_motion_model"] = ["MotionAdapter", "UNetMotionModel"]
-    _import_structure["unets.unet_spatio_temporal_condition"] = ["UNetSpatioTemporalConditionModel"]
+    _import_structure["unets.unet_spatio_temporal_condition"] = [
+        "UNetSpatioTemporalConditionModel"
+    ]
     _import_structure["unets.unet_stable_cascade"] = ["StableCascadeUNet"]
     _import_structure["unets.uvit_2d"] = ["UVit2DModel"]
     _import_structure["vq_model"] = ["VQModel"]
@@ -67,6 +76,7 @@ if TYPE_CHECKING or DIFFUSERS_SLOW_IMPORT:
             AutoencoderTiny,
             ConsistencyDecoderVAE,
         )
+        from .brushnet import BrushNetModel
         from .controlnet import ControlNetModel
         from .embeddings import ImageProjection
         from .modeling_utils import ModelMixin
@@ -100,4 +110,6 @@ if TYPE_CHECKING or DIFFUSERS_SLOW_IMPORT:
 else:
     import sys
 
-    sys.modules[__name__] = _LazyModule(__name__, globals()["__file__"], _import_structure, module_spec=__spec__)
+    sys.modules[__name__] = _LazyModule(
+        __name__, globals()["__file__"], _import_structure, module_spec=__spec__
+    )
